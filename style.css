@@ -2,8 +2,11 @@
 
 
 body{
+    height: 100vh;
+    overflow-y: hidden;
+    background: url(./img/tft_map.jpg);
+    background-size: cover;
     /* title */
-    background-color: rgba(137, 119, 179, 0.87);
     & div:first-of-type{
         margin: 20px;
         display: flex;
@@ -39,24 +42,13 @@ body{
         }
     }
     /* start */
-    & .start{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        & div{
-            p{
-                font-family: "Roboto", sans-serif;
-                font-weight: 500;
-                font-size: 40px;
-            }
-        }
-        & div{
+        & div.start{
             display: flex;
             justify-content: center;
             & button{
                 align-self: center;
-                width: 150px;
-                height: 90px;
+                width: 120px;
+                height: 70px;
                 border-radius: 15px;
                 border-color: #ffffffc4;
                 background-color: #ffffffc4;
@@ -71,5 +63,9 @@ body{
                 font-size: 30px;
             }
         }
-    }
+    
+    /* game */
+     /* & div.game{
+ 
+    }  */
 }
