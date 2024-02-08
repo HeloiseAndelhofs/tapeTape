@@ -75,16 +75,25 @@ body{
     /* game */
       & div.game{
         display: grid;
-        grid-template-columns: auto repeat(5, 220px) auto;
-        grid-template-rows: 130px 130px;  
+        grid-template-columns: auto repeat(5, 230px) auto;
+        grid-template-rows: 140px 130px;  
         
 
         & div.bush{
             background: url(./img/Bush.webp) no-repeat;
             background-size: 190px 160px;
+            position: relative;
+            & .yuumi{
+                background: url(./img/Yuumi.webp) bottom center no-repeat;
+                background-size: 40%;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+            }
         }
         & div.bush1{
-            grid-area: 1/3/2/4;
+            grid-area: 1/3/2/4; 
         }
         & div.bush2{
             grid-area: 1/5/2/6;
