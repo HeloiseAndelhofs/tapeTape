@@ -98,7 +98,7 @@ body{
                 animation-name: yuumiAppear;
                 animation-duration: 6s;
                 animation-delay: 4s;
-                animation-iteration-count: 2;
+                animation-iteration-count: 1;
             }
             
         }
@@ -123,11 +123,11 @@ body{
 
 @keyframes yuumiAppear {
     0% {opacity: 0.5;
-        transform: translateY(-20px)
+        transform: translateY(-40px)
     }
     5%{
         opacity: 1;
-        transform: translateY(-40px);
+        transform: translateY(-50px);
     }
     25%{
         opacity: 1;
