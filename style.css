@@ -101,16 +101,13 @@ div.bush:after{
     height: 100%; */
     width: 230px;
     height: 140px;
-    bottom: 0;
+    /* bottom: 0;  si écran plus grand */
 }
         
 .yuumi{
     background: url(./img/Yuumi.webp) no-repeat center;
     background-size: 40%;
     position: absolute;
-    /* z-index: -2; */
-    /* bottom: -30px; */
-    /* bottom: 0px; */
     top: 40px;
     left: 20%;
     width: 95%;
@@ -120,10 +117,6 @@ div.bush:after{
     pointer-events: auto;
     overflow-y: hidden;
     filter: drop-shadow(1rem 7px 7px rgb(142, 85, 175));
-    /* animation-name: yuumiAppear;
-    animation-duration: 5s;
-    animation-delay: 2s;
-    animation-iteration-count: infinite; */
 }
 div.bush1{
     grid-area: 1/3/2/4; 
@@ -141,26 +134,3 @@ div.bush5{
     grid-area: 2/6/3/7;
 }
     
-    
-
-
-/* @keyframes yuumiAppear {
-    0% {opacity: 0.5;
-        transform: translateY(20px)
-    }
-    60%{
-        opacity: 1;
-        transform: translateY(-50px);
-    }
-    25%{
-        opacity: 1;
-        transform: translateY(-50px)
-    }
-    50%{opacity: 1;
-        transform: translateY(-50px)
-    }
-    75%{opacity: 1;
-        transform: translateY(-50px)
-    }
-    100%{transform: translateY(100px)}
-} */

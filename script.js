@@ -10,7 +10,7 @@ let timeLeft = 10;
 let currentScore = 0;
 let timer;
 let apparitionTimer;
-const time = randomYuumiTime(2000, 5000);
+let time = randomYuumiTime(1700, 3700);
 
 
 
@@ -19,16 +19,15 @@ const time = randomYuumiTime(2000, 5000);
 function randomYuumiTime(min, max) {
     return Math.round(Math.random() * (max-min)+min);
 };
-// console.log(randomYuumiTime(500, 1200));
+
+
+
 
 //calcul du buisson random pour l'apparition de yuumi
 function randomBush(bushes) {
     const i = Math.floor(Math.random() * bushes.length);
     return bushes[i];
 };
-
-// console.log(randomBush(bushes));
-
 
 
 
@@ -83,12 +82,23 @@ const animation = new Animation(keyframeAnimation);
 animation.play();
 
 
-yuumiOut.addEventListener('click', function() {
-        currentScore++;
-        score.textContent = currentScore;
-        console.log("score incremented: " + currentScore);
+// yuumiOut.addEventListener('click', function() {
+//         currentScore++;
+//         score.textContent = currentScore;
+//         console.log("score incremented: " + currentScore);
     
-    });
+//     });
+
+yuumiOut.addEventListener('click', clickHandler);
+    
+function clickHandler() {
+    currentScore++;
+    score.textContent = currentScore;
+    console.log("score incremented: " + currentScore);
+
+    // Remove the event listener after it's clicked
+    yuumiOut.removeEventListener('click', clickHandler);
+}
 };
 
 
@@ -119,24 +129,4 @@ function countdownTimer() {
 };
 //event tape yuumi et score
 
-// document.addEventListener('click', function(event) {
-//     if (event.target.classList.contains('yuumi')) {
-//             currentScore++;
-//             score.textContent = currentScore;
-//             console.log("score incremented: " + currentScore);
-//         }
-//     });
-
-
-
-    
-    
-    // yuumis.forEach(yuumi => {
-        //     yuumi.addEventListener("click", ()=>{
-            //         currentScore++
-            //         score.textContent = currentScore;
-            //         console.log("coucou");
-            //     });
-            // });
-            
-            startGame.addEventListener("click", startGameFnc);
+startGame.addEventListener("click", startGameFnc);
