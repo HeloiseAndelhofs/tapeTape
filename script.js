@@ -8,17 +8,12 @@ const yuumis = document.querySelectorAll(".yuumi");
 
 let timeLeft = 10;
 let currentScore = 0;
+let timer;
+let apparitionTimer;
+const time = randomYuumiTime(2000, 5000);
 
 
-//fonction timer
 
-function countdownTimer() {
-    timeLeft--;
-    secondsCountdown.textContent = timeLeft;
-    if (timeLeft === 0) {
-        clearInterval(timer);
-    }
-};
 
 //Calcul du temps random pour l'apparition de yuumi
 function randomYuumiTime(min, max) {
@@ -35,44 +30,56 @@ function randomBush(bushes) {
 // console.log(randomBush(bushes));
 
 
+
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('yuumi')) {
+            currentScore++;
+            score.textContent = currentScore;
+            console.log("score incremented: " + currentScore);
+        }
+    });
+
+
+
 //fonction pour faire apparaitre yuumi dans un buisson aléatoir pour une durée aléatoire
 
 function yuumiApparition() {
-   time = randomYuumiTime(2000, 5000);
-   bush = randomBush(bushes);
-   const yuumiOut = bush.querySelector(".yuumi");
-   
-   //animation yuumi
+    bush = randomBush(bushes);
+    const yuumiOut = bush.querySelector(".yuumi");
+    
+console.log("yuumi's there !");
 
-       const keyframeAnimation = new KeyframeEffect(
-           yuumiOut,
-           [
-                {offset: '0%',
-                opacity: 0.5,
-                transform: 'translateY(-40px)'
-                },
-                {offset: '5%',
-                opacity: 1,
-                transform: 'translateY(-50px)'
-                },
-                {offset: '25%',
-                opacity: 1,
-                transform: 'translateY(-50px)'
-                },        
-                {offset: '50%',
-                opacity: 1,
-                transform: 'translateY(-50px)'
-                },
-                {offset: '75%',
-                opacity: 1,
-                transform: 'translateY(-50px)'
-                },
-                {offset: '100%',
-                ransform: 'translateY(100px)'
-                }
-            ],
-            {duration: time}
-        );
+    //animation yuumi
+    
+    const keyframeAnimation = new KeyframeEffect(
+        yuumiOut,
+        [
+            {offset: '0%',
+            opacity: 0.5,
+            transform: 'translateY(-40px)'
+            },
+            {offset: '5%',
+            opacity: 1,
+            transform: 'translateY(-50px)'
+            },
+            {offset: '25%',
+            opacity: 1,
+            transform: 'translateY(-50px)'
+            },        
+            {offset: '50%',
+            opacity: 1,
+            transform: 'translateY(-50px)'
+            },
+            {offset: '75%',
+            opacity: 1,
+            transform: 'translateY(-50px)'
+            },
+            {offset: '100%',
+            transform: 'translateY(100px)'
+            }
+        ],
+    {duration: time}
+);
 
 const animation = new Animation(keyframeAnimation);
 animation.play();
@@ -80,34 +87,49 @@ animation.play();
 
 
 
+
 //fonction pour lancer le jeu
 
 function startGameFnc() {
-    currentScore = 0;
-    timeLeft = 10;
-    timer = setInterval(countdownTimer, 1000);
-    yuumiApparition();
+        currentScore = 0;
+        timeLeft = 10;
+        clearInterval(timer);
+        timer = setInterval(countdownTimer, 1000);
+        apparitionTimer = setInterval(yuumiApparition, time);
+        yuumiApparition();
 };
 
 
-//  console.log(yuumiApparition());
+//fonction timer
 
+function countdownTimer() {
+    // const timer = setInterval(countdownTimer, 1000);
+    timeLeft--;
+    secondsCountdown.textContent = timeLeft;
+    if (timeLeft === 0) {
+        clearInterval(timer);
+        clearInterval(apparitionTimer);
+    }
+};
 //event tape yuumi et score
 
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('yuumi')) {
-        currentScore++;
-        score.textContent = currentScore;
-        console.log("coucou");
-    }
-});
 
-// yuumis.forEach(yuumi => {
-//     yuumi.addEventListener("click", ()=>{
-//         currentScore++
-//         score.textContent = currentScore;
-//         console.log("coucou");
-//     });
+
+
+// yuumiOut.addEventListener('click', function() {
+//     currentScore++;
+//     score.textContent = currentScore;
+//     console.log("score incremented: " + currentScore);
+
 // });
 
-startGame.addEventListener("click", startGameFnc);
+        
+        // yuumis.forEach(yuumi => {
+        //     yuumi.addEventListener("click", ()=>{
+        //         currentScore++
+        //         score.textContent = currentScore;
+        //         console.log("coucou");
+        //     });
+        // });
+        
+        startGame.addEventListener("click", startGameFnc);
