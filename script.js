@@ -10,7 +10,7 @@ let timeLeft = 10;
 let currentScore = 0;
 let timer;
 let apparitionTimer;
-let time = randomYuumiTime(1700, 3700);
+let time = randomYuumiTime(1300, 2900);
 
 
 
@@ -89,18 +89,18 @@ animation.play();
     
 //     });
 
+//appel de la fonction et du click pour le score
 yuumiOut.addEventListener('click', clickHandler);
     
 function clickHandler() {
-    currentScore++;
+    currentScore += 1;
     score.textContent = currentScore;
     console.log("score incremented: " + currentScore);
 
-    // Remove the event listener after it's clicked
+    // Enleve le click après avoir été activer
     yuumiOut.removeEventListener('click', clickHandler);
 }
 };
-
 
 
 
@@ -108,10 +108,11 @@ function clickHandler() {
 
 function startGameFnc() {
     currentScore = 0;
+    secondsCountdown.textContent = "10 seconds";
     timeLeft = 10;
-    clearInterval(timer);
-    timer = setInterval(countdownTimer, 1000);
-    apparitionTimer = setInterval(yuumiApparition, time);
+    //clearInterval(timer);//clear pour etre sure de démarrer à 10
+    timer = setInterval(countdownTimer, 1000);//décompte toutes les 1000 milisecondes
+    apparitionTimer = setInterval(yuumiApparition, randomYuumiTime(1300, 2900));//animation se lance toutes les "randomYuumiTime"
     yuumiApparition();
 };
 
@@ -119,14 +120,45 @@ function startGameFnc() {
 //fonction timer
 
 function countdownTimer() {
-    // const timer = setInterval(countdownTimer, 1000);
     timeLeft--;
     secondsCountdown.textContent = timeLeft;
     if (timeLeft === 0) {
-        clearInterval(timer);
-        clearInterval(apparitionTimer);
+        clearInterval(timer); //stop le timer à 0 et le remets à 10
+        clearInterval(apparitionTimer);//clear à la fin des 10 secondes, plus d'animation
+       setTimeout(bravo, 1200);
     }
 };
+
+
+
+//afficher message avec le score, la possibilite d'arerter ou de relancer le jeu
+
+// function bravo() {
+//     const bravoAppear = document.getElementsByClassName("none");
+
+//     const p = document.createElement("p");
+//     bravoAppear[0].appendChild(p);
+//     p.textContent = "You just beat "
+
+
+//     bravoAppear[0].classList.add("bravo");
+//     bravoAppear[0].classList.remove("none");
+
+
+//     document.getElementById("restart").addEventListener("click", ()=>{
+//         bravoAppear[0].classList.remove("bravo");
+//         bravoAppear[0].classList.add("none");
+
+//         startGameFnc();
+
+//     document.getElementById("cancel").addEventListener("click", ()=>{
+//         bravoAppear[0].classList.remove("bravo");
+//         bravoAppear[0].classList.add("none");
+//         secondsCountdown.textContent = "10 seconds"
+//     })
+// });
+
+
 //event tape yuumi et score
 
-startGame.addEventListener("click", startGameFnc);
+startGame.addEventListener("click", startGameFnc); 
