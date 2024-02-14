@@ -48,34 +48,47 @@ function yuumiApparition() {
         yuumiOut,
         [
             {offset: '0%',
-            opacity: 0.5,
-            transform: 'translateY(-40px)'
-        },
-        {offset: '5%',
-        opacity: 1,
-        transform: 'translateY(-50px)'
-    },
-    {offset: '25%',
-    opacity: 1,
-    transform: 'translateY(-50px)'
-},        
-{offset: '50%',
-opacity: 1,
-transform: 'translateY(-50px)'
-},
-{offset: '75%',
-opacity: 1,
-transform: 'translateY(-50px)'
-},
-{offset: '100%',
-transform: 'translateY(100px)'
-}
-],
+            opacity: 0,
+            transform: 'translateY(-20px)'
+            },
+            {offset: '5%',
+            opacity: 0.7,
+            transform: 'translateY(-20px)'
+            },
+            {offset: '12%',
+            opacity: 1,
+            transform: 'translateY(-50px)'
+                },        
+            {offset: '50%',
+            opacity: 1,
+            transform: 'translateY(-50px)'
+            },
+            {offset: '88%',
+            opacity: 0.3,
+            transform: 'translateY(-50px)'
+            },
+            {offset: '95%',
+            opacity: 0.1,
+            transform: 'translateY(-50px)'
+            },
+            {offset: '99%',
+            transform: 'translateY(100px)',
+            opacity: 0
+            }
+        ],
 {duration: time}
 );
 
 const animation = new Animation(keyframeAnimation);
 animation.play();
+
+
+yuumiOut.addEventListener('click', function() {
+        currentScore++;
+        score.textContent = currentScore;
+        console.log("score incremented: " + currentScore);
+    
+    });
 };
 
 
@@ -106,22 +119,16 @@ function countdownTimer() {
 };
 //event tape yuumi et score
 
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('yuumi')) {
-            currentScore++;
-            score.textContent = currentScore;
-            console.log("score incremented: " + currentScore);
-        }
-    });
+// document.addEventListener('click', function(event) {
+//     if (event.target.classList.contains('yuumi')) {
+//             currentScore++;
+//             score.textContent = currentScore;
+//             console.log("score incremented: " + currentScore);
+//         }
+//     });
 
 
 
-// yuumiOut.addEventListener('click', function() {
-    //     currentScore++;
-    //     score.textContent = currentScore;
-    //     console.log("score incremented: " + currentScore);
-    
-    // });
     
     
     // yuumis.forEach(yuumi => {
