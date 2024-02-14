@@ -89,12 +89,12 @@ body{
                 background: url(./img/Yuumi.webp) bottom center no-repeat;
                 background-size: 40%;
                 position: absolute;
-                z-index: -2;
+                z-index: 2;
                 /* bottom: -30px; */
-                top: 50px;
+                top: 10px;
                 width: 100%;
                 height: 100%;
-                opacity: 0;
+                opacity: 1;
                 /* animation-name: yuumiAppear;
                 animation-duration: 5s;
                 animation-delay: 2s;
