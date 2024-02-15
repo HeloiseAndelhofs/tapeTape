@@ -113,10 +113,11 @@ div.bush:after{
     width: 95%;
     height: 110%;
     opacity: 0;
-    cursor: pointer;
     pointer-events: auto;
     overflow-y: hidden;
     filter: drop-shadow(1rem 7px 7px rgb(142, 85, 175));
+    cursor: pointer;
+    /* cursor: url(./img/marteau.jpg) 2 2, pointer; <--arme à rajouter */
 }
 div.bush1{
     grid-area: 1/3/2/4; 

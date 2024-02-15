@@ -23,9 +23,12 @@ function randomBush(bushes) {
     return bushes[i];
 };
 
-let time = randomYuumiTime(2000, 4000);
+randomDelay = function delay() {
+    return Math.random() * (2000 - 500) + 500;
+}
 
 
+// let time = randomYuumiTime(750, 2500);
 
 
 //fonction pour faire apparaitre yuumi dans un buisson aléatoir pour une durée aléatoire
@@ -33,6 +36,8 @@ let time = randomYuumiTime(2000, 4000);
 function yuumiApparition() {
     bush = randomBush(bushes);
     const yuumiOut = bush.querySelector(".yuumi");
+
+    // let appearanceTime = time;
     
     console.log("yuumi's there !");
     
@@ -70,7 +75,7 @@ function yuumiApparition() {
             opacity: 0
             }
         ],
-{duration: time}
+{duration: randomYuumiTime(900, 2700), delay: randomDelay()}
 );
 
 const animation = new Animation(keyframeAnimation);
@@ -88,6 +93,8 @@ function clickHandler() {
 }
 };
 
+
+
 //listener de base pour la 1ere partie
 startGame.addEventListener("click", startGameFnc); 
 
@@ -100,11 +107,11 @@ function startGameFnc() {
 
     clearInterval(timer);
     timer = setInterval(countdownTimer, 1000);//décompte toutes les 1000 milisecondes
-    clearInterval(yuumiApparition);
+    yuumiApparition();
+    clearInterval(apparitionTimer);
     apparitionTimer = setInterval(yuumiApparition, randomYuumiTime(1300, 2900));
     //animation se lance toutes les "randomYuumiTime"
 
-    yuumiApparition();
     
     //rendre start button inutilisable apres un click 
     startGame.removeEventListener("click", startGameFnc);
@@ -145,7 +152,8 @@ function bravo() {
     document.getElementById("restart").addEventListener("click", ()=>{
         bravoClass.classList.add("none");
         p.remove();
-        startGameFnc();
+
+        setTimeout(startGameFnc, 1000);
      });
 
 
