@@ -10,7 +10,6 @@ let timeLeft = 10;
 let currentScore = 0;
 let timer;
 let apparitionTimer;
-let time = randomYuumiTime(1300, 2900);
 
 
 
@@ -29,6 +28,7 @@ function randomBush(bushes) {
     return bushes[i];
 };
 
+let time = randomYuumiTime(2000, 4000);
 
 
 
@@ -133,30 +133,28 @@ function countdownTimer() {
 
 //afficher message avec le score, la possibilite d'arerter ou de relancer le jeu
 
-// function bravo() {
-//     const bravoAppear = document.getElementsByClassName("none");
+function bravo() {
+    const bravoClass = document.querySelector(".none.bravo");
 
-//     const p = document.createElement("p");
-//     bravoAppear[0].appendChild(p);
-//     p.textContent = "You just beat "
+    // const p = document.createElement("p");
+    // bravoClass[0].appendChild(p);
+    // p.textContent = "You just beat "
+
+    bravoClass.classList.remove("none");
+
+    document.getElementById("restart").addEventListener("click", ()=>{
+        // bravoClass.classList.toggle("none");
+        bravoClass.classList.add("none");
+        startGameFnc();
+     });
 
 
-//     bravoAppear[0].classList.add("bravo");
-//     bravoAppear[0].classList.remove("none");
-
-
-//     document.getElementById("restart").addEventListener("click", ()=>{
-//         bravoAppear[0].classList.remove("bravo");
-//         bravoAppear[0].classList.add("none");
-
-//         startGameFnc();
-
-//     document.getElementById("cancel").addEventListener("click", ()=>{
-//         bravoAppear[0].classList.remove("bravo");
-//         bravoAppear[0].classList.add("none");
-//         secondsCountdown.textContent = "10 seconds"
-//     })
-// });
+    document.getElementById("cancel").addEventListener("click", ()=>{
+        // bravoClass.classList.toggle("none");
+        bravoClass.classList.add("none");
+        secondsCountdown.textContent = "10 seconds";
+    })
+};
 
 
 //event tape yuumi et score
